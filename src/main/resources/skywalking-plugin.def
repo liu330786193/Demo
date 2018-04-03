@@ -1,0 +1,5 @@
+spring-mvc-annotation-4.x=com.lyl.demo.plugin.define.ControllerInstrumentation
+spring-mvc-annotation-4.x=com.lyl.demo.plugin.define.RestControllerInstrumentation
+spring-mvc-annotation-4.x=com.lyl.demo.plugin.define.HandlerMethodInstrumentation
+spring-mvc-annotation-4.x=com.lyl.demo.plugin.define.InvocableHandlerInstrumentation
+spring-mvc-annotation-3.x=org.skywalking.apm.plugin.spring.mvc.v3.define.HandlerMethodInvokerInstrumentation
