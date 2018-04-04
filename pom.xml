@@ -54,6 +54,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+	<!--	<dependency>
+			<groupId>org.skywalking</groupId>
+			<artifactId>apm-toolkit-trace</artifactId>
+			<version>3.2.6-2017</version>
+		</dependency>-->
+		<!--<dependency>
+			<groupId>org.skywalking</groupId>
+			<artifactId>apm-toolkit-opentracing</artifactId>
+			<version>3.2.6-2017</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>

@@ -45,24 +45,33 @@ public abstract class AbstractMethodInteceptor implements InstanceMethodsAroundI
     @Override
     public void beforeMethod(EnhancedInstance objInst, Method method, Object[] allArguments, Class<?>[] argumentsTypes,
                              MethodInterceptResult result) throws Throwable {
-        EnhanceRequireObjectCache pathMappingCache = (EnhanceRequireObjectCache)objInst.getSkyWalkingDynamicField();
-        String requestURL = pathMappingCache.findPathMapping(method);
-        if (requestURL == null) {
-            requestURL = getRequestURL(method);
-            pathMappingCache.addPathMapping(method, requestURL);
-            requestURL = pathMappingCache.findPathMapping(method);
-        }
-
+//        EnhanceRequireObjectCache pathMappingCache = (EnhanceRequireObjectCache)objInst.getSkyWalkingDynamicField();
+//        String requestURL = pathMappingCache.findPathMapping(method);
+//        if (requestURL == null) {
+//            requestURL = getRequestURL(method);
+//            pathMappingCache.addPathMapping(method, requestURL);
+//            requestURL = pathMappingCache.findPathMapping(method);
+//        }
+//
         HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+//
+//        ContextCarrier contextCarrier = new ContextCarrier();
+//        CarrierItem next = contextCarrier.items();
+//        while (next.hasNext()) {
+//            next = next.next();
+//            next.setHeadValue(request.getHeader(next.getHeadKey()));
+//        }
+//
+//        AbstractSpan span = ContextManager.createEntrySpan(requestURL, contextCarrier);
+//        Tags.URL.set(span, request.getRequestURL().toString());
+//        Tags.HTTP.METHOD.set(span, request.getMethod());
+//        span.setComponent(ComponentsDefine.SPRING_MVC_ANNOTATION);
+//        SpanLayer.asHttp(span);
+//
+//        Tracer tracer = new SkywalkingTracer();
+//        Tracer.SpanBuilder spanBuilder = tracer.buildSpan("abc");
 
-        ContextCarrier contextCarrier = new ContextCarrier();
-        CarrierItem next = contextCarrier.items();
-        while (next.hasNext()) {
-            next = next.next();
-            next.setHeadValue(request.getHeader(next.getHeadKey()));
-        }
-
-        AbstractSpan span = ContextManager.createEntrySpan(requestURL, contextCarrier);
+        AbstractSpan span = ContextManager.createLocalSpan("interceptor");
         Tags.URL.set(span, request.getRequestURL().toString());
         Tags.HTTP.METHOD.set(span, request.getMethod());
         span.setComponent(ComponentsDefine.SPRING_MVC_ANNOTATION);

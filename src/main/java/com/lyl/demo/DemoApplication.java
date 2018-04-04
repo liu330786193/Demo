@@ -1,7 +1,7 @@
 package com.lyl.demo;
 
-import com.lyl.demo.dao.AccountDao;
 import com.lyl.demo.entity.Account;
+import com.lyl.demo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,15 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import sun.java2d.pipe.SpanIterator;
 
 @Controller
 @SpringBootApplication
 public class DemoApplication {
 
 	@Autowired
-	private AccountDao accountDao;
+	private AccountService accountService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -31,12 +29,12 @@ public class DemoApplication {
 		account.setAge(11);
 		account.setUsername("lyl");
 		account.setPassword("123456");
-		return accountDao.insert(account);
+		return accountService.insert(account);
 	}
 
 	@RequestMapping("/truncate")
 	int truncate(){
-		return accountDao.truncateAccount();
+		return accountService.truncateAccount();
 	}
 
 	public void test(){
