@@ -17,7 +17,7 @@ import sun.java2d.pipe.SpanIterator;
 public class DemoApplication {
 
 	@Autowired
-	private AccountDao accountDao;
+	private AccountService accountService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -31,12 +31,12 @@ public class DemoApplication {
 		account.setAge(11);
 		account.setUsername("lyl");
 		account.setPassword("123456");
-		return accountDao.insert(account);
+		return accountService.insert(account);
 	}
 
 	@RequestMapping("/truncate")
 	int truncate(){
-		return accountDao.truncateAccount();
+		return accountService.truncateAccount();
 	}
 
 	public void test(){
