@@ -1,7 +1,7 @@
 package com.lyl.demo;
 
-import com.lyl.demo.dao.AccountDao;
 import com.lyl.demo.entity.Account;
+import com.lyl.demo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import sun.java2d.pipe.SpanIterator;
 
 @Controller
 @SpringBootApplication
