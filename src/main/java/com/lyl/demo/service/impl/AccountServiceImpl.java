@@ -2,9 +2,9 @@ package com.lyl.demo.service.impl;
 
 import com.lyl.demo.dao.AccountDao;
 import com.lyl.demo.entity.Account;
-import com.lyl.demo.plugin.annotation.Trace;
 import com.lyl.demo.service.AccountService;
-import com.lyl.skywalking.context.ContextManager;
+import com.tsign.cat.core.context.ContextManager;
+import com.tsign.cat.plugin.tookit.trace.activation.annotation.Trace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
