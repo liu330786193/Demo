@@ -30,11 +30,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.lyl</groupId>
-			<artifactId>my-skywalking</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.3.2</version>
@@ -50,49 +45,46 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+			<groupId>io.protostuff</groupId>
+			<artifactId>protostuff-core</artifactId>
+			<version>1.4.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>feign-default-http-9.x-plugin</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>io.protostuff</groupId>
+			<artifactId>protostuff-runtime</artifactId>
+			<version>1.4.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>spring-cloud-feign-1.x-plugin</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>0.11.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>mvc-annotation-4.x-plugin</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.5.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>mysql-5.x-plugin</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>io.protostuff</groupId>
+			<artifactId>protostuff-runtime</artifactId>
+			<version>RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>tookit-trace-activation</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>io.protostuff</groupId>
+			<artifactId>protostuff-api</artifactId>
+			<version>RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>mvc-annotation-commons</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>io.protostuff</groupId>
+			<artifactId>protostuff-core</artifactId>
+			<version>RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>jdbc-commons</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.tsign</groupId>
-			<artifactId>cat-core</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.46</version>
 		</dependency>
 	</dependencies>
 

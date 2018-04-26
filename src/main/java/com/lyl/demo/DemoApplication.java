@@ -1,7 +1,12 @@
 package com.lyl.demo;
 
 import com.lyl.demo.entity.Account;
+import com.lyl.demo.kafka.Config;
+import com.lyl.demo.kafka.Data;
+import com.lyl.demo.kafka.KafkaReceiver;
+import com.lyl.demo.kafka.KafkaSender;
 import com.lyl.demo.service.AccountService;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -39,6 +44,28 @@ public class DemoApplication {
 
 	public void test(){
 		System.out.println("测试内部方法");
+	}
+
+	@GetMapping("/send")
+	@ResponseBody
+	public int sendKafka(){
+		Data d = new Data();
+		d.setAltitude(1);
+		d.setDataTime("2017-12-17 16:21:44");
+		d.setGpsStatus(1);
+		d.setLat(39.123);
+		d.setLon(120.112);
+		d.setDirection(30.2F);
+		d.setId(100L);
+//		KafkaSender.getInstance().send(new ProducerRecord<String, Data>(Config.Kafka.TOPIC, d));
+		return 1;
+	}
+
+	@GetMapping("/receive")
+	@ResponseBody
+	public int receiveKafka(){
+		KafkaReceiver.getInstance().getMsgFromKafka();
+		return 1;
 	}
 
 }
