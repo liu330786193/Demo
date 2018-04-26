@@ -1,5 +1,7 @@
-package com.lyl.demo.kafka;
+package com.lyl.demo.encrypt;
 
+
+import com.tsign.cat.core.kafka.config.TopicConfig;
 import io.protostuff.ProtobufIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
@@ -7,8 +9,7 @@ import org.apache.kafka.common.serialization.Deserializer;
 
 import java.util.Map;
 
-public class DemoDeserializer<T> implements Deserializer<T> {
-
+public class ProtobufDeserializer<T> implements Deserializer<T> {
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
 
@@ -21,9 +22,9 @@ public class DemoDeserializer<T> implements Deserializer<T> {
         }
         TopicConfig topicConfig = TopicConfig.matchFor(topic);
         Schema schema = RuntimeSchema.getSchema(topicConfig.topicClass);
-        T dataProto = (T) topicConfig.topicObject;
-        ProtobufIOUtil.mergeFrom(data, dataProto, schema);
-        return dataProto;
+        T t = (T) topicConfig.topicObject;
+        ProtobufIOUtil.mergeFrom(data, (T) topicConfig.topicObject, schema);
+        return t;
     }
 
     @Override

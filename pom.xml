@@ -45,18 +45,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.protostuff</groupId>
-			<artifactId>protostuff-core</artifactId>
-			<version>1.4.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.protostuff</groupId>
-			<artifactId>protostuff-runtime</artifactId>
-			<version>1.4.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-clients</artifactId>
 			<version>0.11.0.0</version>
@@ -67,24 +55,40 @@
 			<version>3.5.0</version>
 		</dependency>
 		<dependency>
-			<groupId>io.protostuff</groupId>
-			<artifactId>protostuff-runtime</artifactId>
-			<version>RELEASE</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.46</version>
 		</dependency>
 		<dependency>
-			<groupId>io.protostuff</groupId>
-			<artifactId>protostuff-api</artifactId>
-			<version>RELEASE</version>
+			<groupId>com.tsign</groupId>
+			<artifactId>cat-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.kafka</groupId>
+					<artifactId>kafka-clients</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>io.protostuff</groupId>
+					<artifactId>protostuff-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>io.protostuff</groupId>
+					<artifactId>protostuff-runtime</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.protostuff</groupId>
 			<artifactId>protostuff-core</artifactId>
-			<version>RELEASE</version>
+			<version>1.6.0</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.46</version>
+			<groupId>io.protostuff</groupId>
+			<artifactId>protostuff-runtime</artifactId>
+			<version>1.6.0</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

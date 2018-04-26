@@ -61,10 +61,17 @@ public class DemoApplication {
 		return 1;
 	}
 
-	@GetMapping("/receive")
+	@GetMapping("/receive/jvm")
 	@ResponseBody
-	public int receiveKafka(){
-		KafkaReceiver.getInstance().getMsgFromKafka();
+	public int receiveJvmFromKafka(){
+		KafkaReceiver.getInstance().getJvmInfoFromKafka();
+		return 1;
+	}
+
+	@GetMapping("/receive/trace")
+	@ResponseBody
+	public int receiveTraceFromKafka(){
+		KafkaReceiver.getInstance().getTraceInfoFromKafka();
 		return 1;
 	}
 

@@ -1,4 +1,4 @@
-package com.lyl.demo.kafka;
+package com.lyl.demo.encrypt;
 
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtobufIOUtil;
@@ -8,15 +8,14 @@ import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
-public class DemoSerializer<T> implements Serializer<T> {
-
+public class ProtobufSerializer implements Serializer {
     @Override
-    public void configure(Map<String, ?> configs, boolean isKey) {
+    public void configure(Map configs, boolean isKey) {
 
     }
 
     @Override
-    public byte[] serialize(String topic, T data) {
+    public byte[] serialize(String topic, Object data) {
         if (data == null){
             return null;
         }
@@ -37,5 +36,4 @@ public class DemoSerializer<T> implements Serializer<T> {
     public void close() {
 
     }
-
 }
