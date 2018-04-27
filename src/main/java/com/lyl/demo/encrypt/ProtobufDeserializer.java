@@ -1,7 +1,7 @@
 package com.lyl.demo.encrypt;
 
 
-import com.tsign.cat.core.kafka.config.TopicConfig;
+import com.tsign.cat.api.conf.TopicConfig;
 import io.protostuff.ProtobufIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
@@ -20,10 +20,15 @@ public class ProtobufDeserializer<T> implements Deserializer<T> {
         if (data == null){
             return null;
         }
-        TopicConfig topicConfig = TopicConfig.matchFor(topic);
-        Schema schema = RuntimeSchema.getSchema(topicConfig.topicClass);
-        T t = (T) topicConfig.topicObject;
-        ProtobufIOUtil.mergeFrom(data, (T) topicConfig.topicObject, schema);
+        Class<T> clazz = TopicConfig.matchFor(topic).topicClass;
+        Schema schema = RuntimeSchema.getSchema(clazz);
+        T t = null;
+        try {
+            t = clazz.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ProtobufIOUtil.mergeFrom(data, t, schema);
         return t;
     }
 

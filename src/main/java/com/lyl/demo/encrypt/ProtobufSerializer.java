@@ -11,7 +11,6 @@ import java.util.Map;
 public class ProtobufSerializer implements Serializer {
     @Override
     public void configure(Map configs, boolean isKey) {
-
     }
 
     @Override
@@ -34,6 +33,5 @@ public class ProtobufSerializer implements Serializer {
 
     @Override
     public void close() {
-
     }
 }

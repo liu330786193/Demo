@@ -1,10 +1,11 @@
 package com.lyl.demo.kafka;
 
 import com.alibaba.fastjson.JSON;
-import com.tsign.cat.core.context.trace.TraceSegment;
-import com.tsign.cat.core.jvm.packet.JvmPacket;
-import com.tsign.cat.core.kafka.config.KafkaConfig;
+import com.tsign.cat.api.conf.TopicConfig;
+import com.tsign.cat.api.jvm.JvmDTO;
+import com.tsign.cat.api.trace.TraceSegmentDTO;
 import org.apache.kafka.clients.consumer.*;
+
 
 import java.util.Arrays;
 import java.util.Properties;
@@ -28,19 +29,19 @@ public class KafkaReceiver {
     }
 
     public void getJvmInfoFromKafka(){
-        consumer.subscribe(Arrays.asList(KafkaConfig.Kafka.TOPIC_JVM));
-        ConsumerRecords<String, JvmPacket> records = consumer.poll(100);
+        consumer.subscribe(Arrays.asList(TopicConfig.JVM.topicName));
+        ConsumerRecords<String, JvmDTO> records = consumer.poll(100);
         if (records.count() > 0) {
-            for (ConsumerRecord<String, JvmPacket> record : records) {
+            for (ConsumerRecord<String, JvmDTO> record : records) {
                 System.out.println(JSON.toJSONString(record.value()));
             }
         }
     }
     public void getTraceInfoFromKafka(){
-        consumer.subscribe(Arrays.asList(KafkaConfig.Kafka.TOPIC_TRACE));
-        ConsumerRecords<String, TraceSegment> records = consumer.poll(100);
+        consumer.subscribe(Arrays.asList(TopicConfig.TRACE.topicName));
+        ConsumerRecords<String, TraceSegmentDTO> records = consumer.poll(100);
         if (records.count() > 0) {
-            for (ConsumerRecord<String, TraceSegment> record : records) {
+            for (ConsumerRecord<String, TraceSegmentDTO> record : records) {
                 System.out.println(JSON.toJSONString(record.value()));
             }
         }
