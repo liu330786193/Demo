@@ -1,10 +1,11 @@
 package com.lyl.demo.kafka;
 
 
-import com.tsign.cat.api.conf.TopicConfig;
+import com.tsign.cat.api.config.TopicEnum;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.config.TopicConfig;
 
 import java.util.Properties;
 
@@ -32,7 +33,7 @@ public class KafkaSender {
 
 
     public void send(String packet){
-        producer.send(new ProducerRecord<String, String>(TopicConfig.JVM.topicName, packet));
+        producer.send(new ProducerRecord<String, String>(TopicEnum.JVM.topicName, packet));
     }
 
     public void send(ProducerRecord record){

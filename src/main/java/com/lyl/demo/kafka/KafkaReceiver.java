@@ -1,10 +1,11 @@
 package com.lyl.demo.kafka;
 
 import com.alibaba.fastjson.JSON;
-import com.tsign.cat.api.conf.TopicConfig;
+import com.tsign.cat.api.config.TopicEnum;
 import com.tsign.cat.api.jvm.JvmDTO;
-import com.tsign.cat.api.trace.TraceSegmentDTO;
+import com.tsign.cat.api.kafka.TraceSegmentDTO;
 import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.config.TopicConfig;
 
 
 import java.util.Arrays;
@@ -18,7 +19,7 @@ public class KafkaReceiver {
 
     private KafkaReceiver(){
         Properties properties = new Properties();
-        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.9.7:9092");
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         properties.put("group.id", "test");
         properties.put("enable.auto.commit", "true");
         properties.put("auto.commit.interval.ms", "1000");
@@ -29,7 +30,7 @@ public class KafkaReceiver {
     }
 
     public void getJvmInfoFromKafka(){
-        consumer.subscribe(Arrays.asList(TopicConfig.JVM.topicName));
+        consumer.subscribe(Arrays.asList(TopicEnum.JVM.topicName));
         ConsumerRecords<String, JvmDTO> records = consumer.poll(100);
         if (records.count() > 0) {
             for (ConsumerRecord<String, JvmDTO> record : records) {
@@ -38,7 +39,7 @@ public class KafkaReceiver {
         }
     }
     public void getTraceInfoFromKafka(){
-        consumer.subscribe(Arrays.asList(TopicConfig.TRACE.topicName));
+        consumer.subscribe(Arrays.asList(TopicEnum.TRACE.topicName));
         ConsumerRecords<String, TraceSegmentDTO> records = consumer.poll(100);
         if (records.count() > 0) {
             for (ConsumerRecord<String, TraceSegmentDTO> record : records) {

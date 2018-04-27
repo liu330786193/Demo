@@ -1,7 +1,7 @@
 package com.lyl.demo.encrypt;
 
 
-import com.tsign.cat.api.conf.TopicConfig;
+import com.tsign.cat.api.config.TopicEnum;
 import io.protostuff.ProtobufIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
@@ -20,7 +20,7 @@ public class ProtobufDeserializer<T> implements Deserializer<T> {
         if (data == null){
             return null;
         }
-        Class<T> clazz = TopicConfig.matchFor(topic).topicClass;
+        Class<T> clazz = TopicEnum.matchFor(topic).topicClass;
         Schema schema = RuntimeSchema.getSchema(clazz);
         T t = null;
         try {
