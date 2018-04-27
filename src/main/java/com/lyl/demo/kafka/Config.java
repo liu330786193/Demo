@@ -19,6 +19,8 @@
 package com.lyl.demo.kafka;
 
 
+import com.lyl.demo.encrypt.ProtobufDeserializer;
+
 /**
  * This is the core config in sniffer agent.
  *
@@ -27,8 +29,6 @@ package com.lyl.demo.kafka;
 public class Config {
 
     public static class Kafka{
-
-        public static String TOPIC = "monitor-agent1";
 
         public static String BOOTSTRAP_SERVERS = "localhost:9092";
         public static String ACKS = "1";
@@ -40,10 +40,8 @@ public class Config {
         public static String KEY_SERIALIZER = "com.lyl.demo.kafka.DemoSerializer";
 //        public static String VALUE_SERIALIZER = "org.apache.kafka.common.serialization.StringSerializer";
         public static String VALUE_SERIALIZER = "com.lyl.demo.kafka.DemoSerializer";
-        public static String KEY_DESERIALIZER = "com.lyl.demo.kafka.DemoDeserializer";
-        public static String VALUE_DESERIALIZER = "com.lyl.demo.kafka.DemoDeserializer";
-
-
+        public static String KEY_DESERIALIZER = ProtobufDeserializer.class.getName();
+        public static String VALUE_DESERIALIZER = KEY_DESERIALIZER;
     }
 
     public static class Agent {

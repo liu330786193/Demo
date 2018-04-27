@@ -1,5 +1,7 @@
 package com.lyl.demo.kafka;
 
+
+import com.tsign.cat.api.conf.TopicConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -30,7 +32,7 @@ public class KafkaSender {
 
 
     public void send(String packet){
-        producer.send(new ProducerRecord<String, String>(Config.Kafka.TOPIC, packet));
+        producer.send(new ProducerRecord<String, String>(TopicConfig.JVM.topicName, packet));
     }
 
     public void send(ProducerRecord record){
